@@ -8,6 +8,7 @@ import javax.swing.border.EmptyBorder;
 import java.awt.EventQueue;
 
 public class EntranceFrame {
+
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -21,7 +22,6 @@ public class EntranceFrame {
 		});
 	}
 
-	private JPanel contentPane;
 	private JTextField textFieldUserName;
 	private JPasswordField passwordField;
 	JFrame frame;
@@ -69,6 +69,7 @@ public class EntranceFrame {
 		btnSignUp.setForeground(new Color(0, 24, 34, 255));
 		btnSignUp.setBackground(new Color(168, 207, 69, 255));
 		contentPane.add(btnSignUp);
+
 		btnSignUp.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
