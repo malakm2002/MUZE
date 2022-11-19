@@ -40,7 +40,7 @@ public class EntranceFrame {
 		contentPane.setLayout(null);
 		JLabel lblLogo = new JLabel();
 		lblLogo.setIcon(new ImageIcon("C:\\Users\\Malak\\Downloads\\muze.png"));
-		lblLogo.setBounds(0, 0, 340, 453);
+		lblLogo.setBounds(100, 20, 340, 453);
 		contentPane.add(lblLogo);
 
 		JLabel lblUserName = new JLabel("UserName");
@@ -72,7 +72,6 @@ public class EntranceFrame {
 		btnSignUp.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				frame.dispose();
 				SignUpFrame.create();
 			}
 		});
@@ -81,6 +80,12 @@ public class EntranceFrame {
 		btnSignIn.setForeground(new Color(0, 24, 34, 255));
 		btnSignIn.setBackground(new Color(168, 207, 69, 255));
 		btnSignIn.setBounds(560, 264, 89, 23);
+		btnSignIn.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				HomeFrame.create();
+			}
+		});
 		contentPane.add(btnSignIn);
 
 		JLabel lblSignUp = new JLabel("Don't have an account, create one!");
