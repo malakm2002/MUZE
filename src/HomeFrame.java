@@ -1,7 +1,9 @@
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import java.io.*;
+// import org.apache.commons.io.FileUtils;
+// import org.apache.commons.io.FileUtils;
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
@@ -23,28 +25,25 @@ public class HomeFrame {
         lblLogo.setIcon(new ImageIcon("C:\\Users\\Malak\\Downloads\\muze.png"));
         contentPane.add(lblLogo);
 
-        // JLabel lblUploadLogo = new JLabel();
-        // lblUploadLogo.setBounds(33, 24, 154, 135);
-        // lblUploadLogo.setIcon(new
-        // ImageIcon("C:\\Users\\Malak\\Downloads\\upload.jpg"));
-        // contentPane.add(lblUploadLogo);
-
-        // JLabel lblDownloadLogo = new JLabel();
-        // lblDownloadLogo.setBounds(204, 0, 190, 200);
-        // lblDownloadLogo.setIcon(new
-        // ImageIcon("C:\\Users\\Malak\\Downloads\\download.jpg"));
-        // contentPane.add(lblDownloadLogo);
-
         Border emptyBorder = BorderFactory.createEmptyBorder();
         JButton btnUploadLogo = new JButton();
         btnUploadLogo.setIcon(new ImageIcon("C:\\Users\\Malak\\Downloads\\upload.jpg"));
         btnUploadLogo.setBorder(emptyBorder);
         btnUploadLogo.setBackground(new Color(0, 24, 34, 255));
         btnUploadLogo.setBounds(25, 21, 120, 109);
+
         btnUploadLogo.addActionListener((ActionListener) new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                SignUpFrame.create();
+               JFileChooser fileChooser = new JFileChooser("C:\\Users\\Malak\\Desktop\\AUB\\FALL 2022\\CMPS 242");
+               fileChooser.setDialogTitle("Select an audio file to upload");
+               int userSelection = fileChooser.showOpenDialog(frame);
+               if(userSelection==JFileChooser.APPROVE_OPTION){
+                File file =  fileChooser.getSelectedFile();
+                if(file.getName().endsWith(".mp3")){
+                    System.out.println(file.getName());
+                }
+               }
             }
         });
         contentPane.add(btnUploadLogo);
@@ -69,7 +68,7 @@ public class HomeFrame {
         btnListen.addActionListener((ActionListener) new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                SignUpFrame.create();
+                ListenAudiosFrame.create();
             }
         });
 		contentPane.add(btnListen);
