@@ -12,7 +12,7 @@ import javax.swing.border.EmptyBorder;
 
 ;
 
-public class ListenAudiosFrame {
+public class DownloadAudiosFrame {
     public static final File audios = new File("C:\\Users\\Malak\\Desktop\\AUB\\FALL 2022\\CMPS 242\\project\\srcCode\\MUZE\\src\\audios");
     public static final File  downloads = new File("C:\\Users\\Malak\\Desktop\\AUB\\FALL 2022\\CMPS 242\\project\\srcCode\\MUZE\\src\\downloads");
    
@@ -42,12 +42,6 @@ public class ListenAudiosFrame {
         lblFileUploader.setBounds(270, 20, 250, 20);
         contentPane.add(lblFileUploader);
 
-        JLabel lblListen = new JLabel("File Download");
-        lblListen.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 16));
-        lblListen.setBounds(530, 20, 250, 20);
-        lblListen.setForeground(new Color(168, 207, 69, 255));
-        contentPane.add(lblListen);
-
        File[] files = audios.listFiles();
             int height = 30;
             for (File file : files) {
@@ -68,10 +62,10 @@ public class ListenAudiosFrame {
                     lblFileUploader1.setBounds(270, 20 + height, 250, 20);
                     contentPane.add(lblFileUploader1);
 
-                    JButton btnListen = new JButton("Listen");
-                    btnListen.setBackground(new Color(168, 207, 69, 255));
-                    btnListen.setBounds(540, 20 + height, 95, 23);
-                    btnListen.addActionListener(new ActionListener(){
+                    JButton btnDownload1 = new JButton("Download");
+                    btnDownload1.setBackground(new Color(168, 207, 69, 255));
+                    btnDownload1.setBounds(540, 20 + height, 95, 23);
+                    btnDownload1.addActionListener(new ActionListener(){
                         @Override
                         public void actionPerformed(ActionEvent e){
                             try {
@@ -85,7 +79,7 @@ public class ListenAudiosFrame {
                             }
                         }
                     });
-                    contentPane.add(btnListen);
+                    contentPane.add(btnDownload1);
 
                     height += 30;
 
