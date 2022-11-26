@@ -70,15 +70,7 @@ public class ListenAudiosFrame {
                     btnListen.addActionListener(new ActionListener(){
                         @Override
                         public void actionPerformed(ActionEvent e){
-                            try {
-                                Thread.sleep(10000);
-                                if(indirectory(downloads, file)){
-                                    SuccessfulDownloadFrame.create();
-                                }
-
-                            } catch (InterruptedException e1) {
-                                e1.printStackTrace();
-                            }
+                            //the code that will handle the streaming will go here
                         }
                     });
                     contentPane.add(btnListen);

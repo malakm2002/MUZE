@@ -25,6 +25,13 @@ public class EntranceFrame {
 	private JTextField textFieldUserName;
 	private JPasswordField passwordField;
 	JFrame frame;
+	public static final ImageIcon logo = new ImageIcon("C:\\Users\\Malak\\Desktop\\AUB\\FALL 2022\\CMPS 242\\project\\srcCode\\MUZE\\src\\images\\muze.png");
+	public static final ImageIcon download = new ImageIcon("C:\\Users\\Malak\\Desktop\\AUB\\FALL 2022\\CMPS 242\\project\\srcCode\\MUZE\\src\\images\\download.jpg");
+	public static final ImageIcon listen = new ImageIcon("C:\\Users\\Malak\\Desktop\\AUB\\FALL 2022\\CMPS 242\\project\\srcCode\\MUZE\\src\\images\\listen.jpg");
+	public static final ImageIcon songs = new ImageIcon("C:\\Users\\Malak\\Desktop\\AUB\\FALL 2022\\CMPS 242\\project\\srcCode\\MUZE\\src\\images\\songs.jpg");
+	public static final ImageIcon upload = new ImageIcon("C:\\Users\\Malak\\Desktop\\AUB\\FALL 2022\\CMPS 242\\project\\srcCode\\MUZE\\src\\images\\upload.jpg");
+
+
 
 	public EntranceFrame() {
 
@@ -39,7 +46,7 @@ public class EntranceFrame {
 		frame.setContentPane(contentPane);
 		contentPane.setLayout(null);
 		JLabel lblLogo = new JLabel();
-		lblLogo.setIcon(new ImageIcon("C:\\Users\\Malak\\Downloads\\muze.png"));
+		lblLogo.setIcon(logo);
 		lblLogo.setBounds(100, 20, 340, 453);
 		contentPane.add(lblLogo);
 

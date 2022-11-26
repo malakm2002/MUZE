@@ -17,7 +17,7 @@ public class SignUpFrame {
 		contentPane.setLayout(null);
         frame.setVisible(true);
 		JLabel lblLogo = new JLabel();
-		lblLogo.setIcon(new ImageIcon("C:\\Users\\Malak\\Downloads\\muze.png"));
+		lblLogo.setIcon(new ImageIcon("images\\muze.png"));
 		lblLogo.setBounds(0, 0, 480, 463);
 		contentPane.add(lblLogo);
 

@@ -68,14 +68,9 @@ public class DownloadAudiosFrame {
                     btnDownload1.addActionListener(new ActionListener(){
                         @Override
                         public void actionPerformed(ActionEvent e){
-                            try {
-                                Thread.sleep(10000);
-                                if(indirectory(downloads, file)){
-                                    SuccessfulDownloadFrame.create();
-                                }
-
-                            } catch (InterruptedException e1) {
-                                e1.printStackTrace();
+                            if(indirectory(downloads, file)){
+                                //download the file to the directory "downloads"
+                                SuccessfulDownloadFrame.create();
                             }
                         }
                     });

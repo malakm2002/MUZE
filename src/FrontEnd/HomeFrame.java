@@ -22,12 +22,12 @@ public class HomeFrame {
 
         JLabel lblLogo = new JLabel();
         lblLogo.setBounds(412, 24, 364, 400);
-        lblLogo.setIcon(new ImageIcon("C:\\Users\\Malak\\Downloads\\muze.png"));
+        lblLogo.setIcon(EntranceFrame.logo);
         contentPane.add(lblLogo);
 
         Border emptyBorder = BorderFactory.createEmptyBorder();
         JButton btnUploadLogo = new JButton();
-        btnUploadLogo.setIcon(new ImageIcon("C:\\Users\\Malak\\Downloads\\upload.jpg"));
+        btnUploadLogo.setIcon(EntranceFrame.upload);
         btnUploadLogo.setBorder(emptyBorder);
         btnUploadLogo.setBackground(new Color(0, 24, 34, 255));
         btnUploadLogo.setBounds(25, 21, 120, 109);
@@ -35,7 +35,7 @@ public class HomeFrame {
         btnUploadLogo.addActionListener((ActionListener) new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-               JFileChooser fileChooser = new JFileChooser("C:\\Users\\Malak\\Desktop\\AUB\\FALL 2022\\CMPS 242");
+               JFileChooser fileChooser = new JFileChooser();
                fileChooser.setDialogTitle("Select an audio file to upload");
                int userSelection = fileChooser.showOpenDialog(frame);
                if(userSelection==JFileChooser.APPROVE_OPTION){
@@ -51,7 +51,7 @@ public class HomeFrame {
         JButton btnDownloadLogo = new JButton();
         btnDownloadLogo.setBorder(emptyBorder);
         btnDownloadLogo.setBackground(new Color(0, 24, 34, 255));
-        btnDownloadLogo.setIcon(new ImageIcon("C:\\Users\\Malak\\Downloads\\download.jpg"));
+        btnDownloadLogo.setIcon(EntranceFrame.download);
         btnDownloadLogo.setBounds(35, 160, 102, 101);
         btnDownloadLogo.addActionListener((ActionListener) new ActionListener() {
             @Override
@@ -64,7 +64,7 @@ public class HomeFrame {
         JButton btnListen = new JButton();
         btnListen.setBorder(emptyBorder);
 		btnListen.setBounds(251, 37, 108, 93);
-		btnListen.setIcon(new ImageIcon("C:\\Users\\Malak\\Downloads\\listen.jpg"));
+		btnListen.setIcon(EntranceFrame.listen);
         btnListen.addActionListener((ActionListener) new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -75,7 +75,7 @@ public class HomeFrame {
 
         JButton btnAudios = new JButton();
         btnAudios.setBorder(emptyBorder);
-		btnAudios.setIcon(new ImageIcon("C:\\Users\\Malak\\Downloads\\songs.jpg"));
+		btnAudios.setIcon(EntranceFrame.songs);
 		btnAudios.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
                 DownloadAudiosFrame.create();
