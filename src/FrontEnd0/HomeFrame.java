@@ -1,3 +1,5 @@
+package FrontEnd0;
+
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -7,7 +9,9 @@ import java.io.*;
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
+
 public class HomeFrame {
+    public static File file = null;
     public static void create() {
         JFrame frame = new JFrame("MUZE - Home");
         frame.setVisible(true);
@@ -39,7 +43,7 @@ public class HomeFrame {
                fileChooser.setDialogTitle("Select an audio file to upload");
                int userSelection = fileChooser.showOpenDialog(frame);
                if(userSelection==JFileChooser.APPROVE_OPTION){
-                File file =  fileChooser.getSelectedFile();
+                file =  fileChooser.getSelectedFile();
                 if(file.getName().endsWith(".mp3")){
                     System.out.println(file.getName());
                 }

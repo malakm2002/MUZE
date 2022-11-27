@@ -1,8 +1,11 @@
+package FrontEnd0;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -68,10 +71,8 @@ public class DownloadAudiosFrame {
                     btnDownload1.addActionListener(new ActionListener(){
                         @Override
                         public void actionPerformed(ActionEvent e){
-                            if(indirectory(downloads, file)){
-                                //download the file to the directory "downloads"
-                                SuccessfulDownloadFrame.create();
-                            }
+                         
+                            
                         }
                     });
                     contentPane.add(btnDownload1);
