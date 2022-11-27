@@ -1,4 +1,4 @@
-package FrontEnd0;
+
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -45,7 +45,7 @@ public class HomeFrame {
                if(userSelection==JFileChooser.APPROVE_OPTION){
                 file =  fileChooser.getSelectedFile();
                 if(file.getName().endsWith(".mp3")){
-                    System.out.println(file.getName());
+
                 }
                }
             }
