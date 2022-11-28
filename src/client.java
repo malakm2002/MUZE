@@ -1,5 +1,3 @@
-package backend;
-import FrontEnd0.*;
 
 import java.io.*;
 import java.net.Socket;
@@ -11,7 +9,7 @@ public class client {
     }
     public static void sendFiletoServer(File file) throws UnknownHostException, IOException{
         Socket socket = new Socket("localhost", 2222);
-        DataInputStream daInputStream = new DataInputStream(socket.getInputStream());
+            DataInputStream daInputStream = new DataInputStream(socket.getInputStream());
         DataOutputStream daOutputStream = new DataOutputStream(socket.getOutputStream());
         System.out.println("Send the file to the server");
         FileInputStream fileInputStream = new FileInputStream(file);
