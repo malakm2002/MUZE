@@ -1,5 +1,3 @@
-
-
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,6 +7,8 @@ import java.io.*;
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
+import java.sql.*;
+
 
 public class HomeFrame {
     public static File file = null;
@@ -52,10 +52,13 @@ public class HomeFrame {
                         // TODO Auto-generated catch block
                         e1.printStackTrace();
                     }
+               if(userSelection==JFileChooser.APPROVE_OPTION) {
+                    file =  fileChooser.getSelectedFile();
+                    if(file.getName().endsWith(".mp3")){
+				    }
                 }
-               }
             }
-        });
+        }}});
         contentPane.add(btnUploadLogo);
 
         JButton btnDownloadLogo = new JButton();

@@ -6,18 +6,18 @@ DROP TABLE IF EXISTS `audio`;
 DROP TABLE IF EXISTS `user_audio`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
+
+
 CREATE TABLE `user_audio` (
   `Userid` int NOT NULL AUTO_INCREMENT,
   `Audioid` int NOT NULL,
   `is_Uploaded` boolean,
   `is_Downloaded` boolean,
   PRIMARY KEY (`Userid`,`Audioid`),
-  KEY `Audioid_idx` (`Audioid`),
+  KEY `Audioid` (`Audioid`),
   CONSTRAINT `Audioid` FOREIGN KEY (`Audioid`) REFERENCES `audio` (`Audio_id`),
   CONSTRAINT `Userid` FOREIGN KEY (`Userid`) REFERENCES `user` (`User_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
-
 
 
 CREATE TABLE `audio` (

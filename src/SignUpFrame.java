@@ -1,6 +1,7 @@
-
-
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.*;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -82,5 +83,23 @@ public class SignUpFrame {
 		btnCreateAccount.setBackground(new Color(168,207,69,255));
 		btnCreateAccount.setBounds(540, 302, 89, 23);
 		contentPane.add(btnCreateAccount);
-    }
+
+		Connection con = MuzeJDBC.getConnection();
+		btnCreateAccount.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				Statement stmt;
+				ResultSet rs;
+
+				try {
+					stmt = con.createStatement();
+					rs = stmt.executeQuery("INSERT INTO user (User_id, Firstname, Lastname, password, e-mail) values (?, ?, ?, ?, ?)");
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+				
+				
+			  }
+		});     
+	}
 }
