@@ -88,13 +88,27 @@ public class SignUpFrame {
 		btnCreateAccount.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
-				Statement stmt;
+				PreparedStatement stmt;
 				ResultSet rs;
 
 				try {
+					String firstName = txtFldFirstName.getText();
+					String lastname = txtFldLastName.getText();
+					String email = txtFldEmail.getText();
+					String pass = txtFldPassword.getText();
+					if(txtFldConfPassword.getText().equals(pass)){
+						stmt = con.prepareStatement("INSERT INTO user (Firstname, Lastname, password, e-mail) values (?,?,?,?)");
+						stmt.setString(1, txtFldFirstName.getText());
+						stmt.setString(2, txtFldLastName.getText());
+						stmt.setString(4, txtFldEmail.getText());
+						stmt.setString(3, txtFldPassword.getText());
+						stmt.executeUpdate();
+					}
+					else{
+						System.out.println("passwords don't match");
+					}
 					
-					stmt = con.createStatement();
-					rs = stmt.executeQuery("INSERT INTO user (User_id, Firstname, Lastname, password, e-mail) values ()");
+
 				} 
 				
 				catch (SQLException e2) {
