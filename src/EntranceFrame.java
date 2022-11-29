@@ -112,7 +112,7 @@ public class EntranceFrame {
 						System.out.println("Invalid email or password");
 					}
 				} catch (SQLException e1) {
-					throw new RuntimeException("SQL Exception thrown");
+					throw new RuntimeException("SQL Exception:", e1);
 				}
 				
 			}
