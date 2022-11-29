@@ -1,5 +1,3 @@
-
-
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,6 +7,8 @@ import java.io.*;
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
+import java.sql.*;
+
 
 public class HomeFrame {
     public static File file = null;
@@ -42,12 +42,21 @@ public class HomeFrame {
                JFileChooser fileChooser = new JFileChooser();
                fileChooser.setDialogTitle("Select an audio file to upload");
                int userSelection = fileChooser.showOpenDialog(frame);
-               if(userSelection==JFileChooser.APPROVE_OPTION){
-                file =  fileChooser.getSelectedFile();
-                if(file.getName().endsWith(".mp3")){
-
+               if(userSelection==JFileChooser.APPROVE_OPTION) {
+                    file =  fileChooser.getSelectedFile();
+                    if(file.getName().endsWith(".mp3")){
+                        String url = "jdbc:mysql://localhost:3306/muzedb";
+            	        String user = "root";
+            	        String password = "Benzema-09";
+				        try (Connection connection = DriverManager.getConnection(url, user, password);
+					        Statement statement = connection.createStatement()) {
+					        statement.execute("INSERT INTO audio (Audio_id, Audioname, Artist, Uploader) values (?, ?, ?, ?)");
+				        }
+				        catch (SQLException ex) {
+			  	            throw new RuntimeException("Error executing sql:\n" + "INSERT INTO audio (Audio_id, Audioname, Artist, Uploader) values (?, ?, ?, ?)", ex);
+				        }
+                    }
                 }
-               }
             }
         });
         contentPane.add(btnUploadLogo);

@@ -13,6 +13,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import java.sql.*;
+
 ;
 
 public class DownloadAudiosFrame {
@@ -71,15 +73,21 @@ public class DownloadAudiosFrame {
                     btnDownload1.addActionListener(new ActionListener(){
                         @Override
                         public void actionPerformed(ActionEvent e){
-                         
-                            
-                        }
+                            String url = "jdbc:mysql://localhost:3306/muzedb";
+            	            String user = "root";
+            	            String password = "Benzema-09";
+				            try (Connection connection = DriverManager.getConnection(url, user, password);
+					            Statement statement = connection.createStatement()) {
+					            statement.execute("SELECT FROM audio (Audioname, Artist, Uploader) values (?, ?, ?)");
+				            }
+				            catch (SQLException ex) {
+			  	                throw new RuntimeException("Error executing sql:\n" + "SELECT FROM audio (Audioname, Artist, Uploader) values (?, ?, ?)", ex);
+				            }
+		  	            }
                     });
                     contentPane.add(btnDownload1);
 
-                    height += 30;
-
-                
+                    height += 30;                
             }
         }
 

@@ -25,11 +25,18 @@ public class EntranceFrame {
 	private JTextField textFieldUserName;
 	private JPasswordField passwordField;
 	JFrame frame;
-	public static final ImageIcon logo = new ImageIcon("C:\\Users\\Malak\\Desktop\\AUB\\FALL 2022\\CMPS 242\\project\\srcCode\\MUZE\\src\\images\\muze.png");
-	public static final ImageIcon download = new ImageIcon("C:\\Users\\Malak\\Desktop\\AUB\\FALL 2022\\CMPS 242\\project\\srcCode\\MUZE\\src\\images\\download.jpg");
-	public static final ImageIcon listen = new ImageIcon("C:\\Users\\Malak\\Desktop\\AUB\\FALL 2022\\CMPS 242\\project\\srcCode\\MUZE\\src\\images\\listen.jpg");
-	public static final ImageIcon songs = new ImageIcon("C:\\Users\\Malak\\Desktop\\AUB\\FALL 2022\\CMPS 242\\project\\srcCode\\MUZE\\src\\images\\songs.jpg");
-	public static final ImageIcon upload = new ImageIcon("C:\\Users\\Malak\\Desktop\\AUB\\FALL 2022\\CMPS 242\\project\\srcCode\\MUZE\\src\\images\\upload.jpg");
+	//public static final ImageIcon logo = new ImageIcon("C:\\Users\\Malak\\Desktop\\AUB\\FALL 2022\\CMPS 242\\project\\srcCode\\MUZE\\src\\images\\muze.png");
+	//public static final ImageIcon download = new ImageIcon("C:\\Users\\Malak\\Desktop\\AUB\\FALL 2022\\CMPS 242\\project\\srcCode\\MUZE\\src\\images\\download.jpg");
+	//public static final ImageIcon listen = new ImageIcon("C:\\Users\\Malak\\Desktop\\AUB\\FALL 2022\\CMPS 242\\project\\srcCode\\MUZE\\src\\images\\listen.jpg");
+	//public static final ImageIcon songs = new ImageIcon("C:\\Users\\Malak\\Desktop\\AUB\\FALL 2022\\CMPS 242\\project\\srcCode\\MUZE\\src\\images\\songs.jpg");
+	//public static final ImageIcon upload = new ImageIcon("C:\\Users\\Malak\\Desktop\\AUB\\FALL 2022\\CMPS 242\\project\\srcCode\\MUZE\\src\\images\\upload.jpg");
+
+	public static final ImageIcon logo = new ImageIcon("C:\\Users\\Lenovo\\Desktop\\Cmps 242\\Project\\Muze.jpeg");
+	public static final ImageIcon download = new ImageIcon("C:\\Users\\Lenovo\\Desktop\\Cmps 242\\Project\\Download.jpeg");
+	public static final ImageIcon listen = new ImageIcon("C:\\Users\\Lenovo\\Desktop\\Cmps 242\\Project\\Download.jpeg\\Listen.jpeg");
+	public static final ImageIcon songs = new ImageIcon("C:\\Users\\Lenovo\\Desktop\\Cmps 242\\Project\\Songs.jpeg");
+	public static final ImageIcon upload = new ImageIcon("C:\\Users\\Lenovo\\Desktop\\Cmps 242\\Project\\Upload.jpeg");
+
 
 
 
@@ -80,7 +87,7 @@ public class EntranceFrame {
 		btnSignUp.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				SignUpFrame.create();
+				SignUpFrame.create();	
 			}
 		});
 

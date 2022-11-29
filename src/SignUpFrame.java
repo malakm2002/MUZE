@@ -1,6 +1,7 @@
-
-
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.*;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -82,5 +83,21 @@ public class SignUpFrame {
 		btnCreateAccount.setBackground(new Color(168,207,69,255));
 		btnCreateAccount.setBounds(540, 302, 89, 23);
 		contentPane.add(btnCreateAccount);
-    }
+
+		btnCreateAccount.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				String url = "jdbc:mysql://localhost:3306/muzedb";
+				String user = "root";
+				String password = "Benzema-09";
+				try (Connection connection = DriverManager.getConnection(url, user, password);
+					Statement statement = connection.createStatement()) {
+					statement.execute("INSERT INTO user (User_id, Firstname, Lastname, password, e-mail) values (?, ?, ?, ?, ?)");
+				}
+				catch (SQLException ex) {
+					  throw new RuntimeException("Error executing sql:\n" + "INSERT INTO user (User_id, Firstname, Lastname, password, e-mail) values (?, ?, ?, ?, ?)", ex);
+				}
+			  }
+		});     
+	}
 }
