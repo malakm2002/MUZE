@@ -84,24 +84,20 @@ public class SignUpFrame {
 		btnCreateAccount.setBounds(540, 302, 89, 23);
 		contentPane.add(btnCreateAccount);
 
+		Connection con = MuzeJDBC.getConnection();
 		btnCreateAccount.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
-				Connection con;
-				Statement stmt;
-				ResultSet rs;
 
-				con = MuzeJDBC.getConnection();
 				try {
+					Statement stmt;
+					ResultSet rs;
 					stmt = con.createStatement();
-				} catch (SQLException e2) {
-					e2.printStackTrace();
-				}
+					rs = stmt.executeQuery("INSERT INTO user (User_id, Firstname, Lastname, password, e-mail) values ()");
+				} 
 				
-				try {
-					rs = stmt.executeQuery("INSERT INTO user (User_id, Firstname, Lastname, password, e-mail) values (?, ?, ?, ?, ?)");
-				} catch (SQLException e1) {
-					e1.printStackTrace();
+				catch (SQLException e2) {
+					throw new RuntimeException("SQL Exception ", e2);
 				}
 			  }
 		});     
