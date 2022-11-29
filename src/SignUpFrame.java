@@ -97,7 +97,7 @@ public class SignUpFrame {
 					String email = txtFldEmail.getText();
 					String pass = txtFldPassword.getText();
 					if(txtFldConfPassword.getText().equals(pass)){
-						stmt = con.prepareStatement("INSERT INTO user (Firstname, Lastname, password, e-mail) values (?,?,?,?)");
+						stmt = con.prepareStatement("INSERT INTO user (Firstname, Lastname, password, email) values (?,?,?,?)");
 						stmt.setString(1, txtFldFirstName.getText());
 						stmt.setString(2, txtFldLastName.getText());
 						stmt.setString(4, txtFldEmail.getText());
