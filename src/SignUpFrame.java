@@ -92,10 +92,13 @@ public class SignUpFrame {
 				ResultSet rs;
 
 				try {
+					
 					stmt = con.createStatement();
-					rs = stmt.executeQuery("INSERT INTO user (User_id, Firstname, Lastname, password, e-mail) values (?, ?, ?, ?, ?)");
-				} catch (SQLException e1) {
-					e1.printStackTrace();
+					rs = stmt.executeQuery("INSERT INTO user (User_id, Firstname, Lastname, password, e-mail) values ()");
+				} 
+				
+				catch (SQLException e2) {
+					throw new RuntimeException("SQL Exception ", e2);
 				}
 				
 				

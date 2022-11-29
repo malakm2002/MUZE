@@ -2,8 +2,8 @@ import java.sql.*;
 
 
 public class MuzeJDBC {
-    private static String url = "jdbc:mysql://localhost:3306/muzedb";    
-    private static String driverName = "com.mysql.jdbc.Driver";   
+    private static String url = "jdbc:mysql://localhost:3306/muze";    
+    private static String driverName = "com.mysql.cj.jdbc.Driver";   
     private static String username = "root";   
     private static String password = "Benzema-09";
     private static Connection con;
