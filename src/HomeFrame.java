@@ -45,7 +45,13 @@ public class HomeFrame {
                if(userSelection==JFileChooser.APPROVE_OPTION){
                 file =  fileChooser.getSelectedFile();
                 if(file.getName().endsWith(".mp3")){
-
+                    try {
+                        client.sendFiletoServer(file);
+                        SuccessfulDownloadFrame.create();
+                    } catch (Exception e1) {
+                        // TODO Auto-generated catch block
+                        e1.printStackTrace();
+                    }
                 }
                }
             }
