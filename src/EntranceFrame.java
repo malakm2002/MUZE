@@ -104,7 +104,7 @@ public class EntranceFrame {
 				try {
 					Statement stmt = SignUpFrame.con.createStatement();
 					ResultSet res = stmt.executeQuery("SELECT * FROM user WHERE email = \"" + textFieldEmail.getText() + "\"" + " AND password = \"" + passwordField.getText() + "\"");
-					if(res.first()){
+					if(res.next()){
 						frame.dispose();
 						HomeFrame.create();
 					}
