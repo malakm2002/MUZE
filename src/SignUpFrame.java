@@ -7,6 +7,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 public class SignUpFrame {
+	public static Connection con = MuzeJDBC.getConnection();
     
     public static void create(){
         JFrame frame = new JFrame("Sign Up to MUZE!");
@@ -84,7 +85,6 @@ public class SignUpFrame {
 		btnCreateAccount.setBounds(540, 302, 89, 23);
 		contentPane.add(btnCreateAccount);
 
-		Connection con = MuzeJDBC.getConnection();
 		btnCreateAccount.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
@@ -103,6 +103,7 @@ public class SignUpFrame {
 						stmt.setString(4, txtFldEmail.getText());
 						stmt.setString(3, txtFldPassword.getText());
 						stmt.executeUpdate();
+						System.out.println("User added succesfully to the db");
 					}
 					else{
 						System.out.println("passwords don't match");
