@@ -45,17 +45,7 @@ public class HomeFrame {
                if(userSelection==JFileChooser.APPROVE_OPTION) {
                     file =  fileChooser.getSelectedFile();
                     if(file.getName().endsWith(".mp3")){
-                        String url = "jdbc:mysql://localhost:3306/muzedb";
-            	        String user = "root";
-            	        String password = "Benzema-09";
-				        try (Connection connection = DriverManager.getConnection(url, user, password);
-					        Statement statement = connection.createStatement()) {
-					        statement.execute("INSERT INTO audio (Audio_id, Audioname, Artist, Uploader) values (?, ?, ?, ?)");
-				        }
-				        catch (SQLException ex) {
-			  	            throw new RuntimeException("Error executing sql:\n" + "INSERT INTO audio (Audio_id, Audioname, Artist, Uploader) values (?, ?, ?, ?)", ex);
-				        }
-                    }
+				    }
                 }
             }
         });

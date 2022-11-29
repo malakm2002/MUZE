@@ -87,15 +87,21 @@ public class SignUpFrame {
 		btnCreateAccount.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
-				String url = "jdbc:mysql://localhost:3306/muzedb";
-				String user = "root";
-				String password = "Benzema-09";
-				try (Connection connection = DriverManager.getConnection(url, user, password);
-					Statement statement = connection.createStatement()) {
-					statement.execute("INSERT INTO user (User_id, Firstname, Lastname, password, e-mail) values (?, ?, ?, ?, ?)");
+				Connection con;
+				Statement stmt;
+				ResultSet rs;
+
+				con = MuzeJDBC.getConnection();
+				try {
+					stmt = con.createStatement();
+				} catch (SQLException e2) {
+					e2.printStackTrace();
 				}
-				catch (SQLException ex) {
-					  throw new RuntimeException("Error executing sql:\n" + "INSERT INTO user (User_id, Firstname, Lastname, password, e-mail) values (?, ?, ?, ?, ?)", ex);
+				
+				try {
+					rs = stmt.executeQuery("INSERT INTO user (User_id, Firstname, Lastname, password, e-mail) values (?, ?, ?, ?, ?)");
+				} catch (SQLException e1) {
+					e1.printStackTrace();
 				}
 			  }
 		});     

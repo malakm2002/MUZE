@@ -73,16 +73,33 @@ public class DownloadAudiosFrame {
                     btnDownload1.addActionListener(new ActionListener(){
                         @Override
                         public void actionPerformed(ActionEvent e){
-                            String url = "jdbc:mysql://localhost:3306/muzedb";
-            	            String user = "root";
-            	            String password = "Benzema-09";
-				            try (Connection connection = DriverManager.getConnection(url, user, password);
-					            Statement statement = connection.createStatement()) {
-					            statement.execute("SELECT FROM audio (Audioname, Artist, Uploader) values (?, ?, ?)");
-				            }
-				            catch (SQLException ex) {
-			  	                throw new RuntimeException("Error executing sql:\n" + "SELECT FROM audio (Audioname, Artist, Uploader) values (?, ?, ?)", ex);
-				            }
+                            // String url = "jdbc:mysql://localhost:3306/muzedb";
+            	            // String user = "root";
+            	            // String password = "Benzema-09";
+				            // try (Connection connection = DriverManager.getConnection(url, user, password);
+					        //     Statement statement = connection.createStatement()) {
+					        //     statement.executeUpdate("SELECT FROM audio (Audioname, Artist, Uploader) values (?, ?, ?)");
+				            // }
+				            // catch (SQLException ex) {
+			  	            //     throw new RuntimeException("Error executing sql:\n" + "SELECT FROM audio (Audioname, Artist, Uploader) values (?, ?, ?)", ex);
+				            // }
+
+                            Connection con = null;
+                            Statement stmt = null;
+                            ResultSet rs = null;
+
+                            con = MuzeJDBC.getConnection();
+                            try {
+                                stmt = con.createStatement();
+                            } catch (SQLException e2) {
+                                e2.printStackTrace();
+                            }
+                            
+                            try {
+                                rs = stmt.executeQuery("SELECT FROM audio (Audioname, Artist, Uploader) values (?, ?, ?)");
+                            } catch (SQLException e1) {
+                                e1.printStackTrace();
+                            }
 		  	            }
                     });
                     contentPane.add(btnDownload1);

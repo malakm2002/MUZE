@@ -1,18 +1,32 @@
 import java.sql.*;
 
-//create a class called JDBC, everytime we need to establish a connection we create an instance of this class.
+
 public class MuzeJDBC {
-    public static Connection getConnection() throws SQLException {
-        String url = "jdbc:mysql://localhost:3306/muzedb";
-        String user = "root";
-    	String password = "Benzema-09";
-        String sql = null;
-        
-		try (Connection connection = DriverManager.getConnection(url, user, password);) {
-		}
-		catch (SQLException ex) {
-	      	throw new RuntimeException("Error executing sql:\n" + sql, ex);
-		}
-        return null;
+    private static String url = "jdbc:mysql://localhost:3306/muzedb";    
+    private static String driverName = "com.mysql.jdbc.Driver";   
+    private static String username = "root";   
+    private static String password = "Benzema-09";
+    private static Connection con;
+
+    public static Connection getConnection() {
+        try {
+            Class.forName(driverName);
+
+            try {
+                con = DriverManager.getConnection(url, username, password);
+            } 
+            
+            catch (SQLException ex) {
+                // log an exception. fro example:
+                System.out.println("Failed to create the database connection."); 
+            }
+        }
+
+        catch (ClassNotFoundException ex) {
+            // log an exception. for example:
+            System.out.println("Driver not found."); 
+        }
+
+        return con;
     }
 }
