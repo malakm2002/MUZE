@@ -46,8 +46,11 @@ public class HomeFrame {
                 file =  fileChooser.getSelectedFile();
                 if(file.getName().endsWith(".mp3")){
                     try {
-                        client.sendFiletoServer(file, "uploader");
-                        SuccessFrame.create("Uploadded sucessfully to the server.");
+                        PreparedStatement stmt = SignUpFrame.con.prepareStatement("INSERT INTO audio (Audioname,Uploader) values (?,?)");
+            // stmt.setString(1, txtFldFirstName.getText());
+            // stmt.setString(2, txtFldLastName.getText());
+            //             client.sendFiletoServer(file, "uploader");
+                        SuccessFrame.create("Uploaded sucessfully to the server.");
                     } catch (Exception e1) {
                         // TODO Auto-generated catch block
                         e1.printStackTrace();

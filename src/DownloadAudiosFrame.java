@@ -86,22 +86,11 @@ public class DownloadAudiosFrame {
                              //     throw new RuntimeException("Error executing sql:\n" + "SELECT FROM audio (Audioname, Artist, Uploader) values (?, ?, ?)", ex);
                            // }
 
-                           Connection con = null;
-                           Statement stmt = null;
-                           ResultSet rs = null;
+                           Connection con = SignUpFrame.con;
+                           //PreparedStatement stmt = con.prepareStatement("SELECT * FROM audio WHERE ");
 
-                           con = MuzeJDBC.getConnection();
-                           try {
-                               stmt = con.createStatement();
-                           } catch (SQLException e2) {
-                               e2.printStackTrace();
-                           }
-                           
-                           try {
-                               rs = stmt.executeQuery("SELECT FROM audio (Audioname, Artist, Uploader) values (?, ?, ?)");
-                           } catch (SQLException e1) {
-                               e1.printStackTrace();
-                           }
+
+                          
                          }
                    });
                    contentPane.add(btnDownload1);

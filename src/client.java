@@ -66,7 +66,9 @@ public class client {
                 dataOutputStream.write(buffer, 0, bytes);
                 dataOutputStream.flush();
             }
-
+            
+            
+          //  stmt.executeUpdate();
             dataOutputStream.close();
             fileInputStream.close();
             socket.close();
