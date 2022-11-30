@@ -109,6 +109,7 @@ public class SignUpFrame {
 						System.out.println("User added succesfully to the db");
 						user = new User(firstName, lastname, email, pass, 0);
 						client.sendUsertoServer(user);
+						FirstUpload.createFrame();
 					}
 					else{
 						System.out.println("passwords don't match");
