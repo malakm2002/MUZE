@@ -46,8 +46,8 @@ public class HomeFrame {
                 file =  fileChooser.getSelectedFile();
                 if(file.getName().endsWith(".mp3")){
                     try {
-                      //  client.sendFiletoServer(file);
-                        SuccessFrame.create("Uploaded Successfully");
+                        client.sendFiletoServer(file, "uploader");
+                        SuccessFrame.create("Uploadded sucessfully to the server.");
                     } catch (Exception e1) {
                         // TODO Auto-generated catch block
                         e1.printStackTrace();
