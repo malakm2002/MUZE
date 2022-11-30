@@ -36,7 +36,7 @@ public class EntranceFrame {
 
 	public static final ImageIcon logo = new ImageIcon("C:\\Users\\Lenovo\\Desktop\\Cmps 242\\Project\\Muze.jpeg");
 	public static final ImageIcon download = new ImageIcon("C:\\Users\\Lenovo\\Desktop\\Cmps 242\\Project\\Download.jpeg");
-	public static final ImageIcon listen = new ImageIcon("C:\\Users\\Lenovo\\Desktop\\Cmps 242\\Project\\Download.jpeg\\Listen.jpeg");
+	public static final ImageIcon listen = new ImageIcon("C:C:\\Users\\Lenovo\\Desktop\\Cmps 242\\Project\\Listen.jpeg");
 	public static final ImageIcon songs = new ImageIcon("C:\\Users\\Lenovo\\Desktop\\Cmps 242\\Project\\Songs.jpeg");
 	public static final ImageIcon upload = new ImageIcon("C:\\Users\\Lenovo\\Desktop\\Cmps 242\\Project\\Upload.jpeg");
 

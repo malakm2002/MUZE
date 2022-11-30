@@ -17,6 +17,7 @@ public class FirstUpload {
 
 
         JFrame frame = new JFrame();
+        frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setBounds(100, 100, 539, 362);
             JPanel contentPane = new JPanel();

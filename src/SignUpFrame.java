@@ -24,8 +24,8 @@ public class SignUpFrame {
 		contentPane.setLayout(null);
         frame.setVisible(true);
 		JLabel lblLogo = new JLabel();
-		lblLogo.setIcon(new ImageIcon("images\\muze.png"));
-		lblLogo.setBounds(0, 0, 480, 463);
+		lblLogo.setIcon(new ImageIcon("C:\\Users\\Lenovo\\Documents\\GitHub\\MUZE\\src\\images\\muze.png"));
+		lblLogo.setBounds(50, 0, 480, 463);
 		contentPane.add(lblLogo);
 
 		JLabel lblFirstName = new JLabel("First Name");
