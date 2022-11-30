@@ -7,7 +7,10 @@ import java.sql.SQLException;
 public class server {
     public static void main(String[] args) throws IOException{
         System.out.println("Server Running");
-        receiveFilefromClient(HomeFrame.file);
+
+
+     //   receiveFilefromClient(HomeFrame.file);
+        receiveUser(SignUpFrame.user);
     }
 
     public static void receiveUser(User user) throws IOException{
@@ -20,7 +23,7 @@ public class server {
         oStream = new ObjectOutputStream(socket.getOutputStream());
         iStream = new ObjectInputStream(socket.getInputStream());
         Thread thread = new UserHandler(socket, iStream, oStream);
-        thread.start();
+        thread.run();
        }
     }
 
@@ -49,7 +52,7 @@ public class server {
 
                 Thread thread = new ClientHandler(socket, dataInputStream, dataOutputstream);
 
-                thread.start();
+                thread.run();
 
             } 
             catch (IOException e) {
@@ -72,7 +75,7 @@ class ClientHandler extends Thread{
         this.dataInputStream = dataInputStream;
         this.dataOutputStream = dataOutputStream;
     }
-
+    @Override
     public void run() {
         try {
             // Read the size of the file name so know when to stop reading.
@@ -91,7 +94,7 @@ class ClientHandler extends Thread{
                 byte[] buffer = new byte[10*1024];
                 // If the file exists.
                 if (size > 0) {
-                    FileOutputStream fileOutputStream = new FileOutputStream(new File("C:\\Users\\Malak\\Desktop\\AUB\\FALL 2022\\CMPS 242\\project\\muze database\\" + fileName));
+                    FileOutputStream fileOutputStream = new FileOutputStream(new File("C:\\Users\\Lenovo\\Desktop\\muze database\\" + fileName));
                     SuccessFrame.create("file uploaded succesfully to the server and added to the database");
                     //TODO handle inserting the audio file to the database
                     PreparedStatement stmt  = SignUpFrame.con.prepareStatement("INSERT INTO audio (Audioname) values (?)");
@@ -129,18 +132,13 @@ class UserHandler extends Thread{
         this.in = iObjectInputStream;
         this.out = iObjectOutputStream;
     }
-
+    @Override
     public void run(){
 
         try {
             user =(User) in.readObject();
-            if(user != null){
                 System.out.println("Server: user " + user.getEmail() + "received");
-            }
-            else{
-                System.out.println("Server Error: user not received");
-
-            }
+           
         } catch (ClassNotFoundException | IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

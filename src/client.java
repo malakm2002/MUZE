@@ -7,13 +7,16 @@ public class client {
       //  sendFiletoServer(new File("C:\\Users\\Malak\\Desktop\\=rand()\\RANDOM\\music\\DESPACITO ( FRENCH VERSION ) LUIS FONSI FT. DADDY YANKEE ( SARA'H COVER ).mp3"), );
     }
     
-    public static void sendUsertoServer(User user) throws UnknownHostException, IOException{
+    public static void sendUsertoServer(User user) throws UnknownHostException, IOException, ClassNotFoundException{
         Socket socket = new Socket("localhost", 5555);
-        ObjectOutputStream out = new ObjectOutputStream(new BufferedOutputStream(socket.getOutputStream()));
-        ObjectInputStream in = new ObjectInputStream(new BufferedInputStream(socket.getInputStream()));
+        ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
         out.writeObject(user);
-        out.flush();
-        SuccessFrame.create("User information send to the server");
+        System.out.print("User information send to the server");
+
+        // out.close();
+        // in.close();
+        // socket.close();
+        // malak meh mmm131@mail.aub.edu malak1234 malak1234
 
     }
     

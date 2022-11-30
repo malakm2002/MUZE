@@ -10,6 +10,7 @@ import javax.swing.border.EmptyBorder;
 
 public class SignUpFrame {
 	public static Connection con = MuzeJDBC.getConnection();
+	public static User user = null;
     
     public static void create(){
         JFrame frame = new JFrame("Sign Up to MUZE!");
@@ -105,8 +106,8 @@ public class SignUpFrame {
 						stmt.setString(4, txtFldEmail.getText());
 						stmt.setString(3, txtFldPassword.getText());
 						stmt.executeUpdate();
-						SuccessFrame.create("User added succesfully to the db");
-						User user = new User(firstName, lastname, email, pass, 0);
+						System.out.println("User added succesfully to the db");
+						user = new User(firstName, lastname, email, pass, 0);
 						client.sendUsertoServer(user);
 					}
 					else{
@@ -122,6 +123,9 @@ public class SignUpFrame {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (ClassNotFoundException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
