@@ -69,7 +69,7 @@ public class HomeFrame {
         btnDownloadLogo.addActionListener((ActionListener) new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                SignUpFrame.create();
+                DownloadAudiosFrame.create();
             }
         });
         contentPane.add(btnDownloadLogo);

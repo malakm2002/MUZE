@@ -137,6 +137,8 @@ class UserHandler extends Thread{
 
         try {
                 String firstName = in.readLine();
+                String last = in.readLine();
+                 
                 System.out.println("Server: user " + firstName + "received");
            
         } catch (Exception e) {
