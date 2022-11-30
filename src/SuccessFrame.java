@@ -7,8 +7,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.border.EmptyBorder;
 
-public class SuccessfulDownloadFrame {
-    public static void create() {
+public class SuccessFrame {
+    public static void create(String msg) {
         JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setBounds(100, 100, 300, 150);
@@ -18,7 +18,7 @@ public class SuccessfulDownloadFrame {
         frame.setVisible(true);
         contentPane.setLayout(null);
 
-        JLabel lblDownSuccess = new JLabel("Downloaded Successfully!");
+        JLabel lblDownSuccess = new JLabel(msg);
         lblDownSuccess.setFont(new Font("Tahoma", Font.BOLD, 16));
         lblDownSuccess.setBounds(33, 22, 221, 31);
         contentPane.add(lblDownSuccess);

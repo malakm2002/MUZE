@@ -1,18 +1,27 @@
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 public class server {
     public static void main(String[] args) throws IOException{
         System.out.println("Server Running");
         receiveFilefromClient(HomeFrame.file);
+    }
+
+    public static void receiveUser(User user) throws IOException{
+       ServerSocket serverSocket = new ServerSocket(5555);
+       Socket socket;
+       ObjectOutputStream oStream;
+       ObjectInputStream iStream;
+       while(true){
+        socket = serverSocket.accept();
+        oStream = new ObjectOutputStream(socket.getOutputStream());
+        iStream = new ObjectInputStream(socket.getInputStream());
+        Thread thread = new UserHandler(socket, iStream, oStream);
+        thread.start();
+       }
     }
 
     
@@ -52,7 +61,7 @@ public class server {
     }
 }
 
-class ClientHandler extends Thread {
+class ClientHandler extends Thread{
     Socket socket;
     DataInputStream dataInputStream;
     DataOutputStream dataOutputStream;
@@ -83,8 +92,12 @@ class ClientHandler extends Thread {
                 // If the file exists.
                 if (size > 0) {
                     FileOutputStream fileOutputStream = new FileOutputStream(new File("C:\\Users\\Malak\\Desktop\\AUB\\FALL 2022\\CMPS 242\\project\\muze database\\" + fileName));
-                    System.out.println("file uploaded succesfully to the server and added to the database");
+                    SuccessFrame.create("file uploaded succesfully to the server and added to the database");
                     //TODO handle inserting the audio file to the database
+                    PreparedStatement stmt  = SignUpFrame.con.prepareStatement("INSERT INTO audio (Audioname) values (?)");
+                    stmt.setString(1, fileName);
+                    stmt.executeUpdate();
+                    SuccessFrame.create("audio information succesfully added to the database");
                     while (size > 0 && ((bytes = dataInputStream.read(buffer, 0, (int) Math.min(buffer.length, size)))) != -1) {
                         fileOutputStream.write(buffer, 0, bytes);
                         size -= bytes;
@@ -99,6 +112,42 @@ class ClientHandler extends Thread {
         } 
         catch (IOException e) {
             e.printStackTrace();
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
         }
     }
 }
+class UserHandler extends Thread{
+    Socket socket;
+    ObjectInputStream in;
+    ObjectOutputStream out;
+    User user;
+
+    UserHandler(Socket socket, ObjectInputStream iObjectInputStream, ObjectOutputStream iObjectOutputStream){
+        this.socket = socket;
+        this.in = iObjectInputStream;
+        this.out = iObjectOutputStream;
+    }
+
+    public void run(){
+
+        try {
+            user =(User) in.readObject();
+            if(user != null){
+                System.out.println("Server: user " + user.getEmail() + "received");
+            }
+            else{
+                System.out.println("Server Error: user not received");
+
+            }
+        } catch (ClassNotFoundException | IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+    }
+
+}
+
+

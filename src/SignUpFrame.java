@@ -103,7 +103,7 @@ public class SignUpFrame {
 						stmt.setString(4, txtFldEmail.getText());
 						stmt.setString(3, txtFldPassword.getText());
 						stmt.executeUpdate();
-						System.out.println("User added succesfully to the db");
+						SuccessFrame.create("User added succesfully to the db");
 					}
 					else{
 						System.out.println("passwords don't match");

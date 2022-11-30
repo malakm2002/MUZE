@@ -4,10 +4,20 @@ import java.net.UnknownHostException;
 
 public class client {
     public static void main(String[] args) throws IOException {
-        sendFiletoServer(new File("C:\\Users\\Malak\\Desktop\\=rand()\\RANDOM\\music\\DESPACITO ( FRENCH VERSION ) LUIS FONSI FT. DADDY YANKEE ( SARA'H COVER ).mp3"));
+      //  sendFiletoServer(new File("C:\\Users\\Malak\\Desktop\\=rand()\\RANDOM\\music\\DESPACITO ( FRENCH VERSION ) LUIS FONSI FT. DADDY YANKEE ( SARA'H COVER ).mp3"), );
     }
+    
+    public static void sendUsertoServer(User user) throws UnknownHostException, IOException{
+        Socket socket = new Socket("localhost", 5555);
+        ObjectOutputStream out = new ObjectOutputStream(new BufferedOutputStream(socket.getOutputStream()));
+        ObjectInputStream in = new ObjectInputStream(new BufferedInputStream(socket.getInputStream()));
+        out.writeObject(user);
+        out.flush();
+        System.out.println("User information send to the server");
 
-    public static void sendFiletoServer(File file) throws UnknownHostException, IOException {
+    }
+    
+    public static void sendFiletoServer(File file, String Uploader) throws UnknownHostException, IOException {
         Socket socket = new Socket("localhost", 5555);
         try (FileInputStream fileInputStream = new FileInputStream(file.getAbsolutePath())) {
             // Create an output stream to write to write to the server over the socket
@@ -19,7 +29,7 @@ public class client {
             byte[] fileNameBytes = fileName.getBytes();
             // Create a byte array the size of the file so don't send too little or too much
             // data to the server.
-            System.out.println(file.length());
+            System.out.println("file length: "+file.length());
             // byte[] fileBytes = new byte[(int) file.length()];
             // // Put the contents of the file into the array of bytes to be sent so these
             // // bytes can be sent to the server.
