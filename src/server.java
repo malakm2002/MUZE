@@ -9,8 +9,8 @@ public class server {
         System.out.println("Server Running");
 
 
-     //   receiveFilefromClient(HomeFrame.file);
-        receiveUser(SignUpFrame.user);
+       receiveFilefromClient(HomeFrame.file);
+       // receiveUser(SignUpFrame.user);
     }
 
     public static void receiveUser(User user) throws IOException{
