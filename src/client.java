@@ -13,7 +13,7 @@ public class client {
         ObjectInputStream in = new ObjectInputStream(new BufferedInputStream(socket.getInputStream()));
         out.writeObject(user);
         out.flush();
-        System.out.println("User information send to the server");
+        SuccessFrame.create("User information send to the server");
 
     }
     

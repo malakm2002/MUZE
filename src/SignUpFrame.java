@@ -1,6 +1,8 @@
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.net.UnknownHostException;
 import java.sql.*;
 
 import javax.swing.*;
@@ -104,6 +106,8 @@ public class SignUpFrame {
 						stmt.setString(3, txtFldPassword.getText());
 						stmt.executeUpdate();
 						SuccessFrame.create("User added succesfully to the db");
+						User user = new User(firstName, lastname, email, pass, 0);
+						client.sendUsertoServer(user);
 					}
 					else{
 						System.out.println("passwords don't match");
@@ -114,6 +118,12 @@ public class SignUpFrame {
 				
 				catch (SQLException e2) {
 					throw new RuntimeException("SQL Exception ", e2);
+				} catch (UnknownHostException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
 				}
 				
 				
