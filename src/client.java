@@ -1,17 +1,29 @@
 import java.io.*;
 import java.net.Socket;
+import java.net.SocketImpl;
 import java.net.UnknownHostException;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 public class client {
     public static void main(String[] args) throws IOException {
       //  sendFiletoServer(new File("C:\\Users\\Malak\\Desktop\\=rand()\\RANDOM\\music\\DESPACITO ( FRENCH VERSION ) LUIS FONSI FT. DADDY YANKEE ( SARA'H COVER ).mp3"), );
     }
     
-    public static void sendUsertoServer(User user) throws UnknownHostException, IOException, ClassNotFoundException{
+    public static void sendUsertoServer(User user) throws UnknownHostException, IOException, ClassNotFoundException, SQLException{
         Socket socket = new Socket("localhost", 5555);
-        ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
-        out.writeObject(user);
-        System.out.print("User information send to the server");
+        DataOutputStream out = new DataOutputStream(socket.getOutputStream());
+        int portnumber = socket.getLocalPort();
+        user.setPortNB(portnumber);
+        PreparedStatement stmt = SignUpFrame.con.prepareStatement("UPDATE user SET portnumber = " + portnumber + " WHERE email = \"" + user.getEmail() + "\"");
+        stmt.executeUpdate();
+        out.writeChars("!" + user.getFirstName());
+        out.writeChars("@" + user.getLastName());
+        out.writeChars("#" + user.getEmail());
+        out.writeChars("$" + user.getPassword());
+        out.writeChars("%" + user.getPortNB());
+        out.close();
+       System.out.print("User information send to the server");
 
         // out.close();
         // in.close();

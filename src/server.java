@@ -16,12 +16,12 @@ public class server {
     public static void receiveUser(User user) throws IOException{
        ServerSocket serverSocket = new ServerSocket(5555);
        Socket socket;
-       ObjectOutputStream oStream;
-       ObjectInputStream iStream;
+       DataOutputStream oStream;
+       DataInputStream iStream;
        while(true){
         socket = serverSocket.accept();
-        oStream = new ObjectOutputStream(socket.getOutputStream());
-        iStream = new ObjectInputStream(socket.getInputStream());
+        oStream = new DataOutputStream(socket.getOutputStream());
+        iStream = new DataInputStream(socket.getInputStream());
         Thread thread = new UserHandler(socket, iStream, oStream);
         thread.run();
        }
@@ -123,24 +123,23 @@ class ClientHandler extends Thread{
 }
 class UserHandler extends Thread{
     Socket socket;
-    ObjectInputStream in;
-    ObjectOutputStream out;
+    DataInputStream in;
+    DataOutputStream out;
     User user;
 
-    UserHandler(Socket socket, ObjectInputStream iObjectInputStream, ObjectOutputStream iObjectOutputStream){
+    UserHandler(Socket socket, DataInputStream dInputStream, DataOutputStream dOutputStream){
         this.socket = socket;
-        this.in = iObjectInputStream;
-        this.out = iObjectOutputStream;
+        this.in = dInputStream;
+        this.out = dOutputStream;
     }
     @Override
     public void run(){
 
         try {
-            user =(User) in.readObject();
-                System.out.println("Server: user " + user.getEmail() + "received");
+                String firstName = in.readLine();
+                System.out.println("Server: user " + firstName + "received");
            
-        } catch (ClassNotFoundException | IOException e) {
-            // TODO Auto-generated catch block
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
