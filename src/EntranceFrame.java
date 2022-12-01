@@ -102,16 +102,15 @@ public class EntranceFrame {
 			@Override
 			public void actionPerformed(ActionEvent e){
 				try {
-					// Statement stmt = SignUpFrame.con.createStatement();
-					// ResultSet res = stmt.executeQuery("SELECT * FROM user WHERE email = \"" + textFieldEmail.getText() + "\"" + " AND password = \"" + passwordField.getText() + "\"");
-					// if(res.next()){
-					// 	frame.dispose();
-					// 	HomeFrame.create();
-					// }
-					// else{
-					// 	System.out.println("Invalid email or password");
-					// }
-					HomeFrame.create();
+				Statement stmt = SignUpFrame.con.createStatement();
+				ResultSet res = stmt.executeQuery("SELECT * FROM user WHERE email = \"" + textFieldEmail.getText() + "\"" + " AND password = \"" + passwordField.getText() + "\"");
+				if(res.next()){
+				frame.dispose();
+				HomeFrame.create();
+				}
+				else{
+				 	System.out.println("Invalid email or password");
+				}
 				} catch (Exception e1) {
 					throw new RuntimeException("SQL Exception:", e1);
 				}
